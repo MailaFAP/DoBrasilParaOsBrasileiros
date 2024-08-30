@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Enterprise } from "../entities/enterprise.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { CreateEnterpriseDTto } from "src/application/dto/enterprise.create-dto";
+import { CreateEnterpriseDto } from "src/application/dto/enterprise.create-dto";
 
 @Injectable()
 export class EnterpriseService {
@@ -11,7 +11,7 @@ export class EnterpriseService {
         private enterpriseRepository: Repository<Enterprise>,
     ) { }
 
-    async create(createEnterpriseDTO: CreateEnterpriseDTto): Promise<CreateEnterpriseDTto> {
+    async create(createEnterpriseDTO: CreateEnterpriseDto): Promise<Enterprise> {
         const enterprise = this.enterpriseRepository.create(createEnterpriseDTO);
         await this.enterpriseRepository.save(enterprise)
         return enterprise;
@@ -26,7 +26,7 @@ export class EnterpriseService {
     }
 
     async delete(id: string): Promise<void> {
-        await this.enterpriseRepository.delete({ id });
+        await this.enterpriseRepository.delete(id);
     }
 }
 
