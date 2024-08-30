@@ -1,23 +1,32 @@
 import { Injectable } from "@nestjs/common";
-import { FactoryEnterprise } from "../models/enterprises.models";
+import { Enterprise } from "../entities/enterprise.entity";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { CreateEnterpriseDTto } from "src/application/dto/enterprise.create-dto";
 
 @Injectable()
-export class IEnterpriseService{
-    private enterprises: FactoryEnterprise[] = [];
+export class EnterpriseService {
+    constructor(
+        @InjectRepository(Enterprise)
+        private enterpriseRepository: Repository<Enterprise>,
+    ) { }
 
-    create(enterprise: FactoryEnterprise): FactoryEnterprise {
-        this.enterprises.push(enterprise);
+    async create(createEnterpriseDTO: CreateEnterpriseDTto): Promise<CreateEnterpriseDTto> {
+        const enterprise = this.enterpriseRepository.create(createEnterpriseDTO);
+        await this.enterpriseRepository.save(enterprise)
         return enterprise;
     }
 
-    findAll(): FactoryEnterprise[] {
-        return [...this.enterprises];
+    async findAll(): Promise<Enterprise[]> {
+        return await this.enterpriseRepository.find();
     }
 
-    findOne(idAgriculturalCompany: string): FactoryEnterprise {
-        const enterprise = this.enterprises.find((enterprise) => enterprise. === idAgriculturalCompany);
-        return enterprise;
+    async findById(id: string): Promise<Enterprise> {
+        return await this.enterpriseRepository.findOneBy({ id }); 
     }
 
+    async delete(id: string): Promise<void> {
+        await this.enterpriseRepository.delete({ id });
+    }
 }
 
