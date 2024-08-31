@@ -22,27 +22,3 @@ export class Enterprise {
     type: TypeEnterprise;
 }
 
-@Entity('agricultural')
-export class AgriculturalCompany extends Enterprise {
-    @PrimaryGeneratedColumn('uuid')
-    idAgriculturalCompany: string;
-
-    @Column({type: 'float'})
-    totalExported: number;
-
-    @CreateDateColumn({type: 'timestamp'})
-    dateFromDonations: Date;
-}
-
-@Entity('manufactoring')
-export class ManufacturingCompany extends Enterprise {
-    @PrimaryGeneratedColumn('uuid')
-    idManufacturingCompany: string;
-
-    @CreateDateColumn({type: 'timestamp'})
-    dateCameDonations: Date;
-
-    @CreateDateColumn({name: 'TotalCameDonations'})
-    totalCameDonations: number;
-
-}

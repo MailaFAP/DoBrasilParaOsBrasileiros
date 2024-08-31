@@ -6,8 +6,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Exemplo API')
-    .setDescription('Descrição da API')
+    .setTitle('Do Brasil para os brasileiros')
+    .setDescription('Cadastro de empresas doadoras de alimentos')
     .setVersion('1.0')
     .addTag('tags') // Adiciona tags para agrupar os endpoints
     .build();
