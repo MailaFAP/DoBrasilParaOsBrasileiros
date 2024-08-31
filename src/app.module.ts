@@ -4,12 +4,17 @@ import { Enterprise } from './domain/entities/enterprise.entity';
 import { ApplicationModule } from './application/application.module';
 import { DomainModule } from './domain/domain.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env', // Especifica o caminho do arquivo .env
+      isGlobal: true,      // Faz com que as variáveis estejam disponíveis globalmente
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: 'postgres://default:fuEOoXeJ5T9P@ep-red-night-a46a6agi-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
+      url: process.env.DATABASE_URL,
       entities: [Enterprise],
       synchronize: true,
     }),
