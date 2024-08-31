@@ -4,6 +4,7 @@ import { TypeEnterprise } from "src/domain/enums/typeEnterprise.enum";
 
 export class CreateEnterpriseDto{
     @ApiProperty({example: '01023524125635', description: 'CNPJ da empresa'})
+    @IsNotEmpty()
     @IsNumber()
     CNPJ: number;
 
