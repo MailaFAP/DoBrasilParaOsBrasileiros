@@ -1,5 +1,5 @@
 # Do Brasil para os Brasileiros 
-Este projeto visa criar uma API para uma plataforma digital que conecta empresas de agricultores que exportam alimentos a empresas fabricantes de alimentos a criarem uma rede de doações de alimentos para comunidade carente, promovendo a diminuição da fome no Brasil. A API permitirá o cadastro de empresas que colheram o alimento às empresas que usarão este alimento para produção de outros alimentos.
+Este projeto visa criar uma API que conecta empresas de agricultores que exportam alimentos a empresas fabricantes de alimentos a criarem uma rede de doações de alimentos para comunidade carente, promovendo a diminuição da fome no Brasil. A API permitirá o cadastro de empresas que colheram o alimento às empresas que usarão este alimento para produção de outros alimentos.
 
 ##  Público-alvo: 
 - Pessoas em situação de vulnerabilidade alimentar.
@@ -18,10 +18,20 @@ Este projeto visa criar uma API para uma plataforma digital que conecta empresas
 - NestJs
 - PostgreSQL
 - TypeORM
-- Vercel
 - Swagger
+- Class-validator
 
+##  Como utilizar a API: 
 
+Utilizando no seu browser a URL : `https://dobrasilparaosbrasileiros-production.up.railway.app/api`.
+
+- Post : Irá criar um registro de uma empresa. Neste registro será definido se esta empresa é Agrícola ou fabricante de alimentos industrializados.
+
+- Get : Listará todas as empresas registradas.
+
+- Get por ID: Localizará a empresa especificada pelo seu ID.
+
+- Delete: Deletará o registro da empresa especificada pelo seu ID.
 
 
 
